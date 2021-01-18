@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 grillesudoku.adb:9:06: warning: variable "g" is read but never assigned
 grillesudoku.adb:33:04: missing "return" statement in function body
 grillesudoku.adb:38:12: missing argument for parameter "g" in call to "Casevide" declared at grillesudoku.ads:18
@@ -8,3 +9,12 @@ grillesudoku.adb:84:35: warning: estRemplie unimplemented
 grillesudoku.adb:97:09: warning: obtenirChiffresDUneLigne unimplemented
 grillesudoku.adb:112:09: warning: obtenirChiffresDUneColonne unimplemented
 grillesudoku.adb:127:10: warning: obtenirChiffresDUnCarre unimplemented
+=======
+grillesudoku.adb:9:07: warning: variable "g" is read but never assigned
+grillesudoku.adb:78:10: warning: fixerChiffre unimplemented
+grillesudoku.adb:88:36: warning: viderCase unimplemented
+grillesudoku.adb:98:36: warning: estRemplie unimplemented
+grillesudoku.adb:111:10: warning: obtenirChiffresDUneLigne unimplemented
+grillesudoku.adb:126:10: warning: obtenirChiffresDUneColonne unimplemented
+grillesudoku.adb:141:10: warning: obtenirChiffresDUnCarre unimplemented
+>>>>>>> 42808db9a70445ff720d9f20ec87bbdf479debf2

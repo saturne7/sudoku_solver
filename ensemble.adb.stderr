@@ -1,3 +1,6 @@
 ensemble.adb:9:04: warning: variable "Ensemble" is read but never assigned
+<<<<<<< HEAD
 ensemble.adb:73:10: warning: ajouterChiffre unimplemented
 ensemble.adb:84:10: warning: retirerChiffre unimplemented
+=======
+>>>>>>> 42808db9a70445ff720d9f20ec87bbdf479debf2

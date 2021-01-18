@@ -31,6 +31,7 @@ end construireGrille;
    --------------------
 
    function obtenirChiffre
+
    (g : in Type_Grille; c : in Type_Coordonnee) return Integer
      is
         chiffre : Integer;
@@ -39,6 +40,17 @@ end construireGrille;
            raise OBTENIR_CHIFFRE_NUL;
         end if;
 
+
+     (g : in Type_Grille; c : in Type_Coordonnee) return Integer
+      is
+         chiffre : Integer;
+   begin
+         if caseVide(g,c) then
+            raise OBTENIR_CHIFFRE_NUL;
+         end if;
+      chiffre := obtenirCarre(c);
+      return chiffre;
+
    end obtenirChiffre;
 
    --------------------
@@ -46,11 +58,32 @@ end construireGrille;
    --------------------
 
    function nombreChiffres (g : in Type_Grille) return Integer is
+
   begin
    pragma Compile_Time_Warning
        (Standard.True, "nombreChiffres unimplemented");
      return raise Program_Error with "Unimplemented function nombreChiffres";
  end nombreChiffres;
+
+      compt : Integer := 1;
+      nbChiffres : Integer := 0;
+      compt2 : Integer;
+      c : Type_Coordonnee;
+   begin
+      while compt < 9 loop
+         compt2 := 1;
+         while compt2 < 9 loop
+            c := construireCoordonnees(compt,compt2);
+         if not caseVide(g,c) then
+            nbChiffres:= nbChiffres +1;
+            end if;
+            compt2:= compt2+1;
+            end loop;
+            compt := compt+1;
+      end loop;
+      return nbChiffres;
+   end nombreChiffres;
+
 
    ------------------
    -- fixerChiffre --

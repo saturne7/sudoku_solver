@@ -34,7 +34,7 @@ package body ensemble is
    -- appartientChiffre --
    -----------------------
 
-   function appartientChiffre (e : in Type_Ensemble; v : Integer) return Boolean is
+   function appartientChiffre (e : in Type_Ensemble; v : in Integer) return Boolean is
       trouve:boolean;
       begin
          trouve:=FALSE;
@@ -69,9 +69,10 @@ package body ensemble is
 
    procedure ajouterChiffre (e : in out Type_Ensemble; v : in Integer) is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "ajouterChiffre unimplemented");
-      raise Program_Error with "Unimplemented procedure ajouterChiffre";
+      if not appartientChiffre(e,v) then
+         e(v):=TRUE;
+      else raise APPARTIENT_ENSEMBLE;
+      end if;
    end ajouterChiffre;
 
    --------------------
@@ -80,9 +81,10 @@ package body ensemble is
 
    procedure retirerChiffre (e : in out Type_Ensemble; v : in Integer) is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "retirerChiffre unimplemented");
-      raise Program_Error with "Unimplemented procedure retirerChiffre";
+      if appartientChiffre(e,v) then
+         e(v):=FALSE;
+      else raise APPARTIENT_ENSEMBLE;
+      end if;
    end retirerChiffre;
 
 end ensemble;
