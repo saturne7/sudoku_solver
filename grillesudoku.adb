@@ -224,30 +224,44 @@ package body grilleSudoku is
    -- obtenirChiffresDUneLigne --
    ------------------------------
 
-   function obtenirChiffresDUneLigne
-    (g : in Type_Grille; numLigne : in Integer) return Type_Ensemble
+    function obtenirChiffresDUneLigne
+     (g : in Type_Grille; numLigne : in Integer) return Type_Ensemble
    is
+      e : Type_Ensemble;
+      v : integer :=1;
    begin
-     pragma Compile_Time_Warning
-       (Standard.True, "obtenirChiffresDUneLigne unimplemented");
-      return
-        raise Program_Error
-         with "Unimplemented function obtenirChiffresDUneLigne";
-     end obtenirChiffresDUneLigne;
+         while v <= 9 loop
+         if g(numLigne,v) /= 0 then
+            ajouterChiffre(e,v);
+         end if;
+            v := v+1;
+         end loop;
+
+       return e;
+   end obtenirChiffresDUneLigne;
+
+
 
    --------------------------------
    -- obtenirChiffresDUneColonne --
    --------------------------------
 
+
+
    function obtenirChiffresDUneColonne
-    (g : in Type_Grille; numColonne : in Integer) return Type_Ensemble
+     (g : in Type_Grille; numColonne : in Integer) return Type_Ensemble
    is
+      e : Type_Ensemble;
+      v : integer :=1;
    begin
-     pragma Compile_Time_Warning
-       (Standard.True, "obtenirChiffresDUneColonne unimplemented");
-     return
-        raise Program_Error
-          with "Unimplemented function obtenirChiffresDUneColonne";
+         while v <= 9 loop
+         if g(v,numColonne) /= 0 then
+            ajouterChiffre(e,v);
+         end if;
+            v := v+1;
+         end loop;
+
+       return e;
    end obtenirChiffresDUneColonne;
 
    -----------------------------
@@ -257,12 +271,21 @@ package body grilleSudoku is
    function obtenirChiffresDUnCarre
     (g : in Type_Grille; numCarre : in Integer) return Type_Ensemble
    is
+      e : Type_Ensemble;
+      v : integer :=1;
+      v2 : Integer;
    begin
-     pragma Compile_Time_Warning
-        (Standard.True, "obtenirChiffresDUnCarre unimplemented");
-      return
-        raise Program_Error
-         with "Unimplemented function obtenirChiffresDUnCarre";
+      while v <= 3 loop
+         v2:=1;
+         while v2 <=3 loop
+            if g(v,numCarre) /= 0 then
+               ajouterChiffre(e,v);
+            end if;
+            v2 := v2 +1;
+         end loop;
+      v := v+1;
+      end loop;
+      return e;
    end obtenirChiffresDUnCarre;
 
 end grilleSudoku;

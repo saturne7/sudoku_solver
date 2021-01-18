@@ -1,3 +1,0 @@
-grillesudoku.adb:232:09: warning: obtenirChiffresDUneLigne unimplemented
-grillesudoku.adb:247:09: warning: obtenirChiffresDUneColonne unimplemented
-grillesudoku.adb:262:10: warning: obtenirChiffresDUnCarre unimplemented
