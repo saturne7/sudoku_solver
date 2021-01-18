@@ -16,24 +16,32 @@ package body ensemble is
    ------------------
 
    function ensembleVide (e : in Type_Ensemble) return Boolean is
+      c:integer;
+      trouve:boolean;
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "ensembleVide unimplemented");
-      return raise Program_Error with "Unimplemented function ensembleVide";
+      c:=1;
+      trouve:=TRUE;
+      while c<9 and trouve=TRUE loop
+         if not e(c) or e(c) then
+            trouve:=FALSE;
+         end if;
+      c:=c+1;
+      end loop;
+      return trouve;
    end ensembleVide;
 
    -----------------------
    -- appartientChiffre --
    -----------------------
 
-   function appartientChiffre
-     (e : in Type_Ensemble; v : Integer) return Boolean
-   is
-   begin
-      pragma Compile_Time_Warning
-        (Standard.True, "appartientChiffre unimplemented");
-      return
-        raise Program_Error with "Unimplemented function appartientChiffre";
+   function appartientChiffre (e : in Type_Ensemble; v : Integer) return Boolean is
+      trouve:boolean;
+      begin
+         trouve:=FALSE;
+            if not e(v) or e(v) then
+               trouve:=TRUE;
+            end if;
+         return trouve;
    end appartientChiffre;
 
    --------------------
@@ -41,10 +49,18 @@ package body ensemble is
    --------------------
 
    function nombreChiffres (e : in Type_Ensemble) return Integer is
+      c:integer;
+      c2:integer;
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "nombreChiffres unimplemented");
-      return raise Program_Error with "Unimplemented function nombreChiffres";
+      c:=1;
+      c2:=0;
+      while c<9 loop
+         if not e(c) or e(c) then
+            c2:=c2+1;
+         end if;
+      c:=c+1;
+      end loop;
+      return c2;
    end nombreChiffres;
 
    --------------------
