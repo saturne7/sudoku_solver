@@ -1,5 +1,2 @@
-resolutions.adb:92:04: reserved word "end" cannot be used as identifier
-resolutions.adb:94:01: statement expected
-resolutions.adb:94:01: "end loop;" expected for "loop" at line 91
-resolutions.adb:94:01: "end if;" expected for "if" at line 90
-resolutions.adb:94:01: "end resoudreSudoku;" expected
+resolutions.adb:77:19: warning: "return" statement missing following this statement
+resolutions.adb:77:19: warning: Program_Error may be raised at run time
