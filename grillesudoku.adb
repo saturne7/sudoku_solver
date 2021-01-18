@@ -145,12 +145,10 @@ package body grilleSudoku is
       compt : Integer := 1;
       nbChiffres : Integer := 0;
       compt2 : Integer;
-      c : Type_Coordonnee;
    begin
-      while compt < 9 loop
+      while compt <= 9 loop
          compt2 := 1;
-         while compt2 < 9 loop
-            c := construireCoordonnees(compt,compt2);
+         while compt2 <= 9 loop
             if g(compt,compt2) /= 0 then
                nbChiffres:= nbChiffres +1;
             end if;
@@ -199,9 +197,9 @@ package body grilleSudoku is
       compt2 : Integer;
       boole : Boolean :=False;
    begin
-      while compt < 9 loop
+      while compt <= 9 loop
          compt2:=1;
-         while compt2 < 9 loop
+         while compt2 <= 9 loop
             if g(compt,compt2) = 0 then
                boole :=False;
             end if;
