@@ -1,0 +1,5 @@
+resolutions.adb:92:04: reserved word "end" cannot be used as identifier
+resolutions.adb:94:01: statement expected
+resolutions.adb:94:01: "end loop;" expected for "loop" at line 91
+resolutions.adb:94:01: "end if;" expected for "if" at line 90
+resolutions.adb:94:01: "end resoudreSudoku;" expected
