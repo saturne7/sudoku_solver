@@ -66,7 +66,7 @@ package body ensemble is
       r:integer:=0;
       x:integer:=1;
    begin
-      while x<9 loop
+      while x<10 loop
          if e(x) then
             r:=r+1;
          end if;
@@ -102,7 +102,7 @@ package body ensemble is
    begin
       if appartientChiffre(e,v) then
          e(v):=FALSE;
-      else raise APPARTIENT_ENSEMBLE;
+      else raise NON_APPARTIENT_ENSEMBLE;
       end if;
    end retirerChiffre;
 
