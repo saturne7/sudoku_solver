@@ -1,1 +1,7 @@
-grillesudoku.adb:23:29: missing "then"
+grillesudoku.adb:9:07: warning: variable "g" is read but never assigned
+grillesudoku.adb:78:10: warning: fixerChiffre unimplemented
+grillesudoku.adb:88:36: warning: viderCase unimplemented
+grillesudoku.adb:98:36: warning: estRemplie unimplemented
+grillesudoku.adb:111:10: warning: obtenirChiffresDUneLigne unimplemented
+grillesudoku.adb:126:10: warning: obtenirChiffresDUneColonne unimplemented
+grillesudoku.adb:141:10: warning: obtenirChiffresDUnCarre unimplemented

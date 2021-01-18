@@ -35,10 +35,11 @@ package body grilleSudoku is
       is
          chiffre : Integer;
    begin
-         if caseVide then
+         if caseVide(g,c) then
             raise OBTENIR_CHIFFRE_NUL;
          end if;
-
+      chiffre := obtenirCarre(c);
+      return chiffre;
    end obtenirChiffre;
 
    --------------------
@@ -46,10 +47,23 @@ package body grilleSudoku is
    --------------------
 
    function nombreChiffres (g : in Type_Grille) return Integer is
+      compt : Integer := 1;
+      nbChiffres : Integer := 0;
+      compt2 : Integer;
+      c : Type_Coordonnee;
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "nombreChiffres unimplemented");
-      return raise Program_Error with "Unimplemented function nombreChiffres";
+      while compt < 9 loop
+         compt2 := 1;
+         while compt2 < 9 loop
+            c := construireCoordonnees(compt,compt2);
+         if not caseVide(g,c) then
+            nbChiffres:= nbChiffres +1;
+            end if;
+            compt2:= compt2+1;
+            end loop;
+            compt := compt+1;
+      end loop;
+      return nbChiffres;
    end nombreChiffres;
 
    ------------------

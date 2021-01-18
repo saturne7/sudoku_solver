@@ -8,8 +8,11 @@ package body Coordonnee is
    function construireCoordonnees
      (ligne : Integer; colonne : Integer) return Type_Coordonnee
    is
+      c : Type_Coordonnee;
    begin
-     return(ligne,colonne);
+      c.ligne := ligne;
+      c.colonne := colonne;
+     return(c);
    end construireCoordonnees;
 
    ------------------
@@ -18,9 +21,7 @@ package body Coordonnee is
 
    function obtenirLigne (c : Type_Coordonnee) return Integer is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirLigne unimplemented");
-      return raise Program_Error with "Unimplemented function obtenirLigne";
+      return(c.ligne);
    end obtenirLigne;
 
    --------------------
@@ -29,9 +30,7 @@ package body Coordonnee is
 
    function obtenirColonne (c : Type_Coordonnee) return Integer is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirColonne unimplemented");
-      return raise Program_Error with "Unimplemented function obtenirColonne";
+      return(c.colonne);
    end obtenirColonne;
 
    ------------------
@@ -40,9 +39,7 @@ package body Coordonnee is
 
    function obtenirCarre (c : Type_Coordonnee) return Integer is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirCarre unimplemented");
-      return raise Program_Error with "Unimplemented function obtenirCarre";
+
    end obtenirCarre;
 
    ----------------------------
