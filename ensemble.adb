@@ -85,11 +85,11 @@ package body ensemble is
 
    procedure ajouterChiffre (e : in out Type_Ensemble; v : in Integer) is
    begin
-      if (e)=FALSE then
+      if e(v) = False then
          e(v):=true;
       else raise APPARTIENT_ENSEMBLE;
+      end if;
    end ajouterChiffre;
-
 
 
    --------------------
@@ -103,7 +103,9 @@ package body ensemble is
       if e(v)=TRUE then
          e(v):=false;
       else raise NON_APPARTIENT_ENSEMBLE;
+      end if;
    end retirerChiffre;
+
 
 
 

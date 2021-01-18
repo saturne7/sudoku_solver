@@ -224,13 +224,13 @@ package body grilleSudoku is
    begin
       E := construireEnsemble;
       L := numLigne;
-      colonne := cpt;
+      C := compt;
          while compt <= 9 loop
-         if not caseVide(g,contruireCoordonnees(L,C)) then
+         if not caseVide(g,construireCoordonnees(L,C)) then
             ajouterChiffre(E,g(L,C));
          end if;
          compt := compt+1;
-         colonne := cpt;
+         C := compt;
          end loop;
        return E;
    end obtenirChiffresDUneLigne;
@@ -253,13 +253,13 @@ package body grilleSudoku is
    begin
       E := construireEnsemble;
       C := numColonne;
-      L := cpt;
+      L := compt;
          while compt <= 9 loop
-         if not caseVide(g,contruireCoordonnees(L,C)) then
+         if not caseVide(g,construireCoordonnees(L,C)) then
             ajouterChiffre(E,g(L,C));
          end if;
          compt := compt+1;
-         L := cpt;
+         L := compt;
          end loop;
        return E;
    end obtenirChiffresDUneColonne;
@@ -274,14 +274,16 @@ package body grilleSudoku is
       E: Type_Ensemble;
       C: Type_Coordonnee;
       Co: Type_Coordonnee;
+      v : Integer :=1;
+      v2 : Integer;
    begin
       c := obtenirCoordonneeCarre(numCarre);
       while v <= 3 loop
          v2:=1;
          while v2 <=3 loop
-            Co := construireCoordonnees(obtenirLigne(c)+(v-1),obtenirColonne(c)+(v2-1);
+            Co := construireCoordonnees(obtenirLigne(c)+(v-1),obtenirColonne(c)+(v2-1));
             if not caseVide(g,Co) then
-               ajouterChiffre(E,g(obtenirLigne(Co),obtenirColonne(Co);
+               ajouterChiffre(E,g(obtenirLigne(Co),obtenirColonne(Co)));
             end if;
             v2 := v2 +1;
          end loop;
