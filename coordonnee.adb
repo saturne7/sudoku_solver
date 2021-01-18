@@ -39,13 +39,27 @@ package body Coordonnee is
 
    function obtenirCarre (c : Type_Coordonnee) return Integer is
 
-      numcarre : Integer;
-
    begin
 
-      numcarre :=((3*(c.ligne-1)/3)+(c.colonne-1)/3)+1;
-      return(numcarre);
-
+      if c.ligne <= 3 and c.colonne <=3 then
+         return 1;
+      elsif c.ligne <= 3 and c.colonne > 3 and c.colonne <= 6 then
+      return 2;
+      elsif c.ligne <= 3 and c.colonne > 6 then
+      return 3;
+      elsif c.ligne > 3 and c.ligne <= 6 and c.colonne <= 3 then
+      return 4;
+      elsif c.ligne > 3 and c.ligne <= 6 and c.colonne > 3 and c.colonne <= 6 then
+      return 5;
+      elsif c.ligne > 3 and c.ligne <= 6 and c.colonne > 6 then
+      return 6;
+      elsif c.ligne > 6 and c.colonne <= 3 then
+      return 7;
+      elsif c.ligne > 6 and c.colonne > 3 and c.colonne <= 6 then
+      return 8;
+      elsif c.ligne > 6 and c.colonne > 6 then
+         return 9;
+         end if;
 
    end obtenirCarre;
 
