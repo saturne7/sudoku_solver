@@ -95,18 +95,16 @@ package body resolutions is
       carre:Type_Ensemble;
       compteurSol:Integer:=0;
    begin
-      if not estRemplie(g) then
+      if estRemplie(g) then
          i:=1;
          while i < 9 loop
             j:=1;
             while j < 9 loop
-               put("1");
                ligne:=obtenirChiffresDUneLigne(g,obtenirLigne(c));
                colonne:=obtenirChiffresDUneColonne(g,obtenirColonne(c));
                carre:=obtenirChiffresDUnCarre(g,obtenirCarre(c));
 
                for i in 1..9 loop
-                  put("2");
                   if estChiffreValable(g,i,c) and i = obtenirChiffre(g,c) then
                      compteurSol:=compteurSol+1;
                   end if;
