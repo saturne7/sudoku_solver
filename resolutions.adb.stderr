@@ -1,0 +1,4 @@
+resolutions.adb:37:10: warning: obtenirSolutionsPossibles unimplemented
+resolutions.adb:52:10: warning: rechercherSolutionUniqueDansEnsemble unimplemented
+resolutions.adb:62:54: warning: formal parameter "trouve" is not referenced
+resolutions.adb:65:10: warning: resoudreSudoku unimplemented

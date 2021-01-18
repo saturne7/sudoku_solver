@@ -35,15 +35,6 @@ end construireGrille;
    (g : in Type_Grille; c : in Type_Coordonnee) return Integer
      is
         chiffre : Integer;
-  begin
-        if caseVide then
-           raise OBTENIR_CHIFFRE_NUL;
-        end if;
-
-
-     (g : in Type_Grille; c : in Type_Coordonnee) return Integer
-      is
-         chiffre : Integer;
    begin
          if caseVide(g,c) then
             raise OBTENIR_CHIFFRE_NUL;
@@ -58,12 +49,6 @@ end construireGrille;
    --------------------
 
    function nombreChiffres (g : in Type_Grille) return Integer is
-
-  begin
-   pragma Compile_Time_Warning
-       (Standard.True, "nombreChiffres unimplemented");
-     return raise Program_Error with "Unimplemented function nombreChiffres";
- end nombreChiffres;
 
       compt : Integer := 1;
       nbChiffres : Integer := 0;
