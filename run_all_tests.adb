@@ -9,6 +9,16 @@ begin
    for i in les_Tests'Range loop
       resultats(i) := les_Tests(i).function_Of_Test.all;
       put("test ");
+
+      put(i,0);
+      put(" = ");
+      if resultats(i) then
+         put("OK");
+      else
+         put("Non OK");
+      end if;
+      New_Line;
+
         put(i,0);
         put(" = ");
         if resultats(i) then
@@ -17,6 +27,7 @@ begin
           put("Non OK");
         end if;
        New_Line;
+
    end loop;
 
    -- affichage des resultats

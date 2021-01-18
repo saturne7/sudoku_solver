@@ -110,7 +110,7 @@ package body grilleSudoku is
    is
       boole : Boolean := False;
    begin
-      if obtenirChiffre(g,c) = 0 then
+      if g(obtenirColonne(c),obtenirLigne(c))= 0 then
             boole := True;
       end if;
     return boole;
