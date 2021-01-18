@@ -8,11 +8,21 @@ package body resolutions is
    function estChiffreValable
      (g : in Type_Grille; v : Integer; c : Type_Coordonnee) return Boolean
    is
+      colonne:Type_Ensemble;
+      ligne:Type_Ensemble;
+      carre:Type_Ensemble;
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "estChiffreValable unimplemented");
-      return
-        raise Program_Error with "Unimplemented function estChiffreValable";
+      if not caseVide(g,c) then
+         raise CASE_NON_VIDE with "Unimplemented function estChiffreValable";
+      end if;
+
+      ligne:=obtenirChiffresDUneLigne(g,obtenirLigne(c));
+      colonne:=obtenirChiffresDUneColonne(g,obtenirColonne(c));
+      carre:=obtenirChiffresDUnCarre(g,obtenirCarre(c));
+
+      return appartientChiffre(ligne,v) or appartientChiffre(colonne,v)
+        or appartientChiffre(carre,v);
+
    end estChiffreValable;
 
    -------------------------------
