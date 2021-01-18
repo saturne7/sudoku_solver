@@ -45,13 +45,15 @@ package body resolutions is
       ligne:=obtenirChiffresDUneLigne(g,obtenirLigne(c));
       colonne:=obtenirChiffresDUneColonne(g,obtenirColonne(c));
       carre:=obtenirChiffresDUnCarre(g,obtenirCarre(c));
-
+      i:=1;
       while i < 9 loop
          if not appartientChiffre(ligne,i) and not appartientChiffre(colonne,i)
            and not appartientChiffre(carre,i) then
-            valeurs(i):=true;
+            ajouterChiffre(valeurs,i);
+         end if;
          i:=i+1;
       end loop;
+      return valeurs;
    end obtenirSolutionsPossibles;
 
    ------------------------------------------
