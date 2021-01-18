@@ -1,88 +1,106 @@
-pragma Ada_2012;
 package body ensemble is
+
+
 
    ------------------------
    -- construireEnsemble --
    ------------------------
 
+
+
    function construireEnsemble return Type_Ensemble is
-   Ensemble:Type_Ensemble;
+      e:Type_Ensemble;
    begin
-      for i in 1..9 loop
-         Ensemble(i):=FALSE;
-      end loop;
-      return Ensemble;
+      e:=(false,false,false,false,false,false,false,false,false);
+   return e;
    end construireEnsemble;
+
+
 
    ------------------
    -- ensembleVide --
    ------------------
 
+
+
    function ensembleVide (e : in Type_Ensemble) return Boolean is
    begin
-      for i in 1..9 loop
-         if e(i) then
-            return false;
-         end if;
-         end loop;
-      return true;
+      if e=(false,false,false,false,false,false,false,false,false)then
+         return true;
+      else
+         return false;
+      end if;
    end ensembleVide;
+
+
 
    -----------------------
    -- appartientChiffre --
    -----------------------
 
-   function appartientChiffre (e : in Type_Ensemble; v : in Integer) return Boolean is
-      trouve:boolean;
-      begin
-         trouve:=FALSE;
-            if e(v) then
-               trouve:=TRUE;
-            end if;
-         return trouve;
+
+
+   function appartientChiffre
+     (e : in Type_Ensemble; v : Integer) return Boolean
+   is
+
+
+
+   begin
+      if e(v)=true then
+         return true;
+      else
+         return false;
+      end if;
    end appartientChiffre;
+
+
 
    --------------------
    -- nombreChiffres --
    --------------------
 
+
+
    function nombreChiffres (e : in Type_Ensemble) return Integer is
-      c:integer;
-      c2:integer;
+      r:integer:=0;
+      x:integer:=1;
    begin
-      c:=1;
-      c2:=0;
-      while c<9 loop
-         if e(c) then
-            c2:=c2+1;
+      while x<10 loop
+         if e(x)=true then
+            r:=r+1;
          end if;
-      c:=c+1;
+         x:=x+1;
       end loop;
-      return c2;
+      return r;
    end nombreChiffres;
+
+
 
    --------------------
    -- ajouterChiffre --
    --------------------
 
+
+
    procedure ajouterChiffre (e : in out Type_Ensemble; v : in Integer) is
    begin
-      if not appartientChiffre(e,v) then
-         e(v):=TRUE;
-      else raise APPARTIENT_ENSEMBLE;
-      end if;
+      e(v):=true;
    end ajouterChiffre;
+
+
 
    --------------------
    -- retirerChiffre --
    --------------------
 
+
+
    procedure retirerChiffre (e : in out Type_Ensemble; v : in Integer) is
    begin
-      if appartientChiffre(e,v) then
-         e(v):=FALSE;
-      else raise APPARTIENT_ENSEMBLE;
-      end if;
+      e(v):=false;
    end retirerChiffre;
+
+
 
 end ensemble;
