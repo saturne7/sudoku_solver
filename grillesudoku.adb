@@ -7,9 +7,9 @@ package body grilleSudoku is
    ----------------------
 
    function construireGrille return Type_Grille is
-      g : Type_Grille;
+     g : Type_Grille;
    begin
-      return g;
+     return g;
    end construireGrille;
 
    --------------
@@ -24,23 +24,25 @@ package body grilleSudoku is
       if obtenirChiffre(g,c) = 0 then
             boole := True;
       end if;
-      return boole;
-   end caseVide;
+    return boole;
+  end caseVide;
 
    --------------------
    -- obtenirChiffre --
    --------------------
 
    function obtenirChiffre
-     (g : in Type_Grille; c : in Type_Coordonnee) return Integer
-      is
-         chiffre : Integer;
+
+   (g : in Type_Grille; c : in Type_Coordonnee) return Integer
+     is
+        chiffre : Integer;
    begin
          if caseVide(g,c) then
             raise OBTENIR_CHIFFRE_NUL;
          end if;
       chiffre := obtenirCarre(c);
       return chiffre;
+
    end obtenirChiffre;
 
    --------------------
@@ -48,6 +50,7 @@ package body grilleSudoku is
    --------------------
 
    function nombreChiffres (g : in Type_Grille) return Integer is
+
       compt : Integer := 1;
       nbChiffres : Integer := 0;
       compt2 : Integer;
@@ -67,6 +70,7 @@ package body grilleSudoku is
       return nbChiffres;
    end nombreChiffres;
 
+
    ------------------
    -- fixerChiffre --
    ------------------
@@ -74,15 +78,11 @@ package body grilleSudoku is
    procedure fixerChiffre
      (g : in out Type_Grille; c : in Type_Coordonnee; v : in Integer)
    is
-      colonne : Integer;
-      ligne : Integer;
    begin
-      colonne := c.colonne;
-      ligne := c.ligne;
       if not caseVide(g,c) then
          raise FIXER_CHIFFRE_NON_NUL;
       else
-        g(colonne,ligne) := v;
+        g(obtenirColonne(c),obtenirLigne(c)) := v;
       end if;
    end fixerChiffre;
 
@@ -92,8 +92,11 @@ package body grilleSudoku is
 
    procedure viderCase (g : in out Type_Grille; c : in out Type_Coordonnee) is
    begin
-      pragma Compile_Time_Warning (Standard.True, "viderCase unimplemented");
-      raise Program_Error with "Unimplemented procedure viderCase";
+      if g(obtenirColonne(c),obtenirLigne(c)) /= 0 then
+            g(obtenirColonne(c),obtenirLigne(c)):=0;
+         else
+            raise VIDER_CASE_VIDE;
+      end if;
    end viderCase;
 
    ----------------
@@ -101,9 +104,16 @@ package body grilleSudoku is
    ----------------
 
    function estRemplie (g : in Type_Grille) return Boolean is
+      compt : Integer;
+      compt2 : Integer;
+      boole : Boolean :=False;
    begin
-      pragma Compile_Time_Warning (Standard.True, "estRemplie unimplemented");
-      return raise Program_Error with "Unimplemented function estRemplie";
+      while compt < 9 loop
+         compt2:=1;
+         while compt2 < 9 loop
+         end loop;
+      end loop;
+      return boole;
    end estRemplie;
 
    ------------------------------
@@ -111,27 +121,27 @@ package body grilleSudoku is
    ------------------------------
 
    function obtenirChiffresDUneLigne
-     (g : in Type_Grille; numLigne : in Integer) return Type_Ensemble
-   is
+    (g : in Type_Grille; numLigne : in Integer) return Type_Ensemble
+  is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirChiffresDUneLigne unimplemented");
+     pragma Compile_Time_Warning
+       (Standard.True, "obtenirChiffresDUneLigne unimplemented");
       return
         raise Program_Error
-          with "Unimplemented function obtenirChiffresDUneLigne";
-   end obtenirChiffresDUneLigne;
+         with "Unimplemented function obtenirChiffresDUneLigne";
+     end obtenirChiffresDUneLigne;
 
    --------------------------------
    -- obtenirChiffresDUneColonne --
    --------------------------------
 
    function obtenirChiffresDUneColonne
-     (g : in Type_Grille; numColonne : in Integer) return Type_Ensemble
+    (g : in Type_Grille; numColonne : in Integer) return Type_Ensemble
    is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirChiffresDUneColonne unimplemented");
-      return
+     pragma Compile_Time_Warning
+       (Standard.True, "obtenirChiffresDUneColonne unimplemented");
+     return
         raise Program_Error
           with "Unimplemented function obtenirChiffresDUneColonne";
    end obtenirChiffresDUneColonne;
@@ -141,14 +151,14 @@ package body grilleSudoku is
    -----------------------------
 
    function obtenirChiffresDUnCarre
-     (g : in Type_Grille; numCarre : in Integer) return Type_Ensemble
+    (g : in Type_Grille; numCarre : in Integer) return Type_Ensemble
    is
    begin
-      pragma Compile_Time_Warning
+     pragma Compile_Time_Warning
         (Standard.True, "obtenirChiffresDUnCarre unimplemented");
       return
         raise Program_Error
-          with "Unimplemented function obtenirChiffresDUnCarre";
+         with "Unimplemented function obtenirChiffresDUnCarre";
    end obtenirChiffresDUnCarre;
 
 end grilleSudoku;

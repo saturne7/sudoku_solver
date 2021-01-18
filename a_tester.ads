@@ -105,7 +105,7 @@ package a_tester is
       (test_Coordonnees_P4'Access,
        To_Unbounded_String ("echec de la propriete 4 Coordonnees")),
 
-   -- tests TAD Ensemble
+     -- tests TAD Ensemble
       (test_Ensemble_P1'Access,
        To_Unbounded_String ("echec de la propriete 1 Ensemble")),
       (test_Ensemble_P2'Access,
