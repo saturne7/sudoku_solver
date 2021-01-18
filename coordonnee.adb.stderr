@@ -1,0 +1,4 @@
+coordonnee.adb:22:10: warning: obtenirLigne unimplemented
+coordonnee.adb:33:10: warning: obtenirColonne unimplemented
+coordonnee.adb:44:10: warning: obtenirCarre unimplemented
+coordonnee.adb:56:10: warning: obtenirCoordonneeCarre unimplemented
