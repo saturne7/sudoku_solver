@@ -149,11 +149,11 @@ package body grilleSudoku is
          compt2 := 1;
          while compt2 < 9 loop
             c := construireCoordonnees(compt,compt2);
-         if not caseVide(g,c) then
-            nbChiffres:= nbChiffres +1;
+            if g(compt,compt2) /= 0 then
+               nbChiffres:= nbChiffres +1;
             end if;
             compt2:= compt2+1;
-            end loop;
+         end loop;
             compt := compt+1;
       end loop;
       return nbChiffres;
@@ -167,16 +167,12 @@ package body grilleSudoku is
    procedure fixerChiffre
      (g : in out Type_Grille; c : in Type_Coordonnee; v : in Integer)
    is
-      ligne: integer;
-      col: integer;
    begin
-      if v=0 then
+      if caseVide(g,c) then
+         g(obtenirLigne(c),obtenirColonne(c)):=v;
+      else
          raise FIXER_CHIFFRE_NON_NUL;
       end if;
-      col:=obtenirColonne(c);
-      ligne:=obtenirLigne(c);
-      g(ligne,col):=v;
-
    end fixerChiffre;
 
    ---------------
@@ -199,28 +195,18 @@ package body grilleSudoku is
    function estRemplie (g : in Type_Grille) return Boolean is
       compt : Integer :=1;
       compt2 : Integer;
-      c : Type_Coordonnee;
       boole : Boolean :=False;
-      testRemplis : Integer := 0;
    begin
       while compt < 9 loop
          compt2:=1;
          while compt2 < 9 loop
-            c:=(construireCoordonnees(compt,compt2));
-            if not caseVide(g,c) then
-               boole := true;
-            else
+            if g(compt,compt2) = 0 then
                boole :=False;
-               testRemplis := testRemplis+1;
             end if;
             compt2:=compt2+1;
          end loop;
          compt:=compt+1;
       end loop;
-
-      if testRemplis >= 1 then
-         boole := False;
-      end if;
       return boole;
    end estRemplie;
 
@@ -231,17 +217,22 @@ package body grilleSudoku is
     function obtenirChiffresDUneLigne
      (g : in Type_Grille; numLigne : in Integer) return Type_Ensemble
    is
-      e : Type_Ensemble;
-      v : integer :=1;
+      E : Type_Ensemble;
+      L : integer;
+      C : Integer;
+      compt : Integer :=1;
    begin
-         while v <= 9 loop
-         if g(numLigne,v) /= 0 then
-            ajouterChiffre(e,v);
+      E := construireEnsemble;
+      L := numLigne;
+      colonne := cpt;
+         while compt <= 9 loop
+         if not caseVide(g,contruireCoordonnees(L,C)) then
+            ajouterChiffre(E,g(L,C));
          end if;
-            v := v+1;
+         compt := compt+1;
+         colonne := cpt;
          end loop;
-
-       return e;
+       return E;
    end obtenirChiffresDUneLigne;
 
 
@@ -255,17 +246,22 @@ package body grilleSudoku is
    function obtenirChiffresDUneColonne
      (g : in Type_Grille; numColonne : in Integer) return Type_Ensemble
    is
-      e : Type_Ensemble;
-      v : integer :=1;
+      E : Type_Ensemble;
+      L : integer;
+      C : Integer;
+      compt : Integer :=1;
    begin
-         while v <= 9 loop
-         if g(v,numColonne) /= 0 then
-            ajouterChiffre(e,v);
+      E := construireEnsemble;
+      C := numColonne;
+      L := cpt;
+         while compt <= 9 loop
+         if not caseVide(g,contruireCoordonnees(L,C)) then
+            ajouterChiffre(E,g(L,C));
          end if;
-            v := v+1;
+         compt := compt+1;
+         L := cpt;
          end loop;
-
-       return e;
+       return E;
    end obtenirChiffresDUneColonne;
 
    -----------------------------
@@ -275,21 +271,23 @@ package body grilleSudoku is
    function obtenirChiffresDUnCarre
     (g : in Type_Grille; numCarre : in Integer) return Type_Ensemble
    is
-      e : Type_Ensemble;
-      v : integer :=1;
-      v2 : Integer;
+      E: Type_Ensemble;
+      C: Type_Coordonnee;
+      Co: Type_Coordonnee;
    begin
+      c := obtenirCoordonneeCarre(numCarre);
       while v <= 3 loop
          v2:=1;
          while v2 <=3 loop
-            if g(v,numCarre) /= 0 then
-               ajouterChiffre(e,v);
+            Co := construireCoordonnees(obtenirLigne(c)+(v-1),obtenirColonne(c)+(v2-1);
+            if not caseVide(g,Co) then
+               ajouterChiffre(E,g(obtenirLigne(Co),obtenirColonne(Co);
             end if;
             v2 := v2 +1;
          end loop;
       v := v+1;
       end loop;
-      return e;
+      return E;
    end obtenirChiffresDUnCarre;
 
 end grilleSudoku;

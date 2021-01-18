@@ -1,2 +1,0 @@
-coordonnee.adb:44:07: warning: "return" statement missing following this statement
-coordonnee.adb:44:07: warning: Program_Error may be raised at run time
