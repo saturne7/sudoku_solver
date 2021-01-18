@@ -8,6 +8,9 @@ package body ensemble is
    function construireEnsemble return Type_Ensemble is
    Ensemble:Type_Ensemble;
    begin
+      for i in 1..9 loop
+         Ensemble(i):=FALSE;
+      end loop;
       return Ensemble;
    end construireEnsemble;
 
@@ -16,18 +19,13 @@ package body ensemble is
    ------------------
 
    function ensembleVide (e : in Type_Ensemble) return Boolean is
-      c:integer;
-      trouve:boolean;
    begin
-      c:=1;
-      trouve:=TRUE;
-      while c<9 and trouve=TRUE loop
-         if not e(c) or e(c) then
-            trouve:=FALSE;
+      for i in 1..9 loop
+         if e(i) then
+            return false;
          end if;
-      c:=c+1;
-      end loop;
-      return trouve;
+         end loop;
+      return true;
    end ensembleVide;
 
    -----------------------
@@ -38,7 +36,7 @@ package body ensemble is
       trouve:boolean;
       begin
          trouve:=FALSE;
-            if not e(v) or e(v) then
+            if e(v) then
                trouve:=TRUE;
             end if;
          return trouve;
@@ -55,7 +53,7 @@ package body ensemble is
       c:=1;
       c2:=0;
       while c<9 loop
-         if not e(c) or e(c) then
+         if e(c) then
             c2:=c2+1;
          end if;
       c:=c+1;
