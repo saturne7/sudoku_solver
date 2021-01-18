@@ -1,5 +1,4 @@
 grillesudoku.adb:10:06: warning: variable "g" is read but never assigned
-grillesudoku.adb:109:25: "c" is undefined
-grillesudoku.adb:124:09: warning: obtenirChiffresDUneLigne unimplemented
-grillesudoku.adb:139:09: warning: obtenirChiffresDUneColonne unimplemented
-grillesudoku.adb:154:10: warning: obtenirChiffresDUnCarre unimplemented
+grillesudoku.adb:143:09: warning: obtenirChiffresDUneLigne unimplemented
+grillesudoku.adb:158:09: warning: obtenirChiffresDUneColonne unimplemented
+grillesudoku.adb:173:10: warning: obtenirChiffresDUnCarre unimplemented

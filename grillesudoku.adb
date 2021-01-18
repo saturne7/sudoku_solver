@@ -104,15 +104,30 @@ package body grilleSudoku is
    ----------------
 
    function estRemplie (g : in Type_Grille) return Boolean is
-      compt : Integer;
+      compt : Integer :=1;
       compt2 : Integer;
+      c : Type_Coordonnee;
       boole : Boolean :=False;
+      testRemplis : Integer := 0;
    begin
       while compt < 9 loop
          compt2:=1;
          while compt2 < 9 loop
+            c:=(construireCoordonnees(compt,compt2));
+            if not caseVide(g,c) then
+               boole := true;
+            else
+               boole :=False;
+               testRemplis := testRemplis+1;
+            end if;
+            compt2:=compt2+1;
          end loop;
+         compt:=compt+1;
       end loop;
+
+      if testRemplis >= 1 then
+         boole := False;
+      end if;
       return boole;
    end estRemplie;
 
