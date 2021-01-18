@@ -75,9 +75,10 @@ package body resolutions is
 
       i:=1;
       while i < 9 loop
-         if resultats(i) then
+         if appartientChiffre(resultats,i) then
             return i;
          end if;
+         i:=i+1;
       end loop;
    end rechercherSolutionUniqueDansEnsemble;
 
