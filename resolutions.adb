@@ -95,29 +95,34 @@ package body resolutions is
       carre:Type_Ensemble;
       compteurSol:Integer:=0;
    begin
-      if estRemplie(g) then
+      if not estRemplie(g) then
          i:=1;
          while i < 9 loop
             j:=1;
             while j < 9 loop
-               c:=construireCoordonnees(i,j);
-               ligne:=obtenirChiffresDUneLigne(g,i);
-               colonne:=obtenirChiffresDUneColonne(g,j);
+               put("1");
+               ligne:=obtenirChiffresDUneLigne(g,obtenirLigne(c));
+               colonne:=obtenirChiffresDUneColonne(g,obtenirColonne(c));
                carre:=obtenirChiffresDUnCarre(g,obtenirCarre(c));
-               if nombreChiffres(obtenirSolutionsPossibles(g,c)) > 1 and
-                 ensembleVide(obtenirSolutionsPossibles(g,c)) then
-                  compteurSol:=compteurSol+1;
-               end if;
+
+               for i in 1..9 loop
+                  put("2");
+                  if estChiffreValable(g,i,c) and i = obtenirChiffre(g,c) then
+                     compteurSol:=compteurSol+1;
+                  end if;
+               end loop;
                j:=j+1;
             end loop;
             i:=i+1;
          end loop;
+         put(compteurSol);
          if compteurSol = 81 then
             trouve:=true;
          else
             trouve:=false;
          end if;
       else
+         put("ABCD");
          trouve:=false;
       end if;
    end resoudreSudoku;
