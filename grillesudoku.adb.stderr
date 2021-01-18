@@ -1,7 +1,8 @@
-grillesudoku.adb:9:07: warning: variable "g" is read but never assigned
-grillesudoku.adb:78:10: warning: fixerChiffre unimplemented
-grillesudoku.adb:88:36: warning: viderCase unimplemented
-grillesudoku.adb:98:36: warning: estRemplie unimplemented
-grillesudoku.adb:111:10: warning: obtenirChiffresDUneLigne unimplemented
-grillesudoku.adb:126:10: warning: obtenirChiffresDUneColonne unimplemented
-grillesudoku.adb:141:10: warning: obtenirChiffresDUnCarre unimplemented
+grillesudoku.adb:10:07: warning: variable "g" is read but never assigned
+grillesudoku.adb:80:18: invalid prefix in selected component "c"
+grillesudoku.adb:81:16: invalid prefix in selected component "c"
+grillesudoku.adb:95:36: warning: viderCase unimplemented
+grillesudoku.adb:105:36: warning: estRemplie unimplemented
+grillesudoku.adb:118:10: warning: obtenirChiffresDUneLigne unimplemented
+grillesudoku.adb:133:10: warning: obtenirChiffresDUneColonne unimplemented
+grillesudoku.adb:148:10: warning: obtenirChiffresDUnCarre unimplemented

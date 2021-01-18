@@ -1,4 +1,5 @@
 pragma Ada_2012;
+with Coordonnee; use Coordonnee;
 package body grilleSudoku is
 
    ----------------------
@@ -73,10 +74,16 @@ package body grilleSudoku is
    procedure fixerChiffre
      (g : in out Type_Grille; c : in Type_Coordonnee; v : in Integer)
    is
+      colonne : Integer;
+      ligne : Integer;
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "fixerChiffre unimplemented");
-      raise Program_Error with "Unimplemented procedure fixerChiffre";
+      colonne := c.colonne;
+      ligne := c.ligne;
+      if not caseVide(g,c) then
+         raise FIXER_CHIFFRE_NON_NUL;
+      else
+        g(colonne,ligne) := v;
+      end if;
    end fixerChiffre;
 
    ---------------

@@ -31,7 +31,7 @@ package grilleSudoku is
 
    -- positionne la valeur v de la case de coordonnee c de la grille g
    -- nécessite que la case c soit vide
-   -- lève l'exception FIXER_CHIFFRE_NON_NUL si la case est vide
+   -- lève l'exception FIXER_CHIFFRE_NON_NUL si la case est pleine
    procedure fixerChiffre
      (g : in out Type_Grille;
       c : in     Type_Coordonnee;
