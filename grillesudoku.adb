@@ -108,10 +108,12 @@ package body grilleSudoku is
    function caseVide
      (g : in Type_Grille; c : in Type_Coordonnee) return Boolean
    is
-      boole : Boolean := False;
+      boole : Boolean;
    begin
-      if g(obtenirColonne(c),obtenirLigne(c))= 0 then
-            boole := True;
+      if g(obtenirColonne(c),obtenirLigne(c)) = 0 then
+         boole := True;
+      else
+         boole := False;
       end if;
     return boole;
   end caseVide;
@@ -291,5 +293,6 @@ package body grilleSudoku is
       end loop;
       return E;
    end obtenirChiffresDUnCarre;
+
 
 end grilleSudoku;
