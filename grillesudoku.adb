@@ -120,18 +120,18 @@ package body grilleSudoku is
    -- obtenirChiffre --
    --------------------
 
-   function obtenirChiffre
-
-   (g : in Type_Grille; c : in Type_Coordonnee) return Integer
-     is
-        chiffre : Integer;
+    function obtenirChiffre
+     (g : in Type_Grille; c : in Type_Coordonnee) return Integer
+   is
+      ligne: integer;
+      col: integer;
    begin
-         if caseVide(g,c) then
-            raise OBTENIR_CHIFFRE_NUL;
-         end if;
-      chiffre := obtenirCarre(c);
-      return chiffre;
-
+      if caseVide(g,c) then
+         raise OBTENIR_CHIFFRE_NUL;
+      end if;
+      col:=obtenirColonne(c);
+      ligne:=obtenirLigne(c);
+      return g(ligne,col);
    end obtenirChiffre;
 
    --------------------
@@ -167,12 +167,16 @@ package body grilleSudoku is
    procedure fixerChiffre
      (g : in out Type_Grille; c : in Type_Coordonnee; v : in Integer)
    is
+      ligne: integer;
+      col: integer;
    begin
-      if not caseVide(g,c) then
+      if v=0 then
          raise FIXER_CHIFFRE_NON_NUL;
-      else
-        g(obtenirColonne(c),obtenirLigne(c)) := v;
       end if;
+      col:=obtenirColonne(c);
+      ligne:=obtenirLigne(c);
+      g(ligne,col):=v;
+
    end fixerChiffre;
 
    ---------------
