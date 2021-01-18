@@ -86,9 +86,39 @@ package body resolutions is
    --------------------
 
    procedure resoudreSudoku (g : in out Type_Grille; trouve : out Boolean) is
+      i:Integer;
+      j:Integer;
+      c:Type_Coordonnee;
+      colonne:Type_Ensemble;
+      ligne:Type_Ensemble;
+      carre:Type_Ensemble;
+      compteurSol:Integer:=0;
    begin
       if estRemplie(g) then
-         while
+         i:=1;
+         while i < 9 loop;
+            j:=1;
+            while j < 9 loop
+               c:=construireCoordonnees(i,j);
+               ligne:=obtenirChiffresDUneLigne(g,i);
+               colonne:=obtenirChiffresDUneColonne(g,j);
+               carre:=obtenirChiffresDUnCarre(g,obtenirCarre(c));
+               if rechercherSolutionUniqueDansEnsemble
+                 (obtenirSolutionsPossibles(g,c)) then
+                  compteurSol:=compteurSol+1;
+               end if;
+               j:=j+1;
+            end loop;
+            i:=i+1;
+         end loop;
+         if compteurSol = 81 then
+            trouve:=true;
+         else
+            trouve:=false;
+         end if;
+      else
+         trouve:=false;
+      end if;
    end resoudreSudoku;
 
 end resolutions;
