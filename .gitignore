@@ -1,0 +1,10 @@
+*.o
+*.ali
+*.exe
+*.xml
+b_*
+*.db*
+*.cgpr
+*.bexch
+*.npp
+
