@@ -8,8 +8,11 @@ package body Coordonnee is
    function construireCoordonnees
      (ligne : Integer; colonne : Integer) return Type_Coordonnee
    is
+      c : Type_Coordonnee;
    begin
-     return(ligne,colonne);
+      c.ligne := ligne;
+      c.colonne := colonne;
+     return(c);
    end construireCoordonnees;
 
    ------------------
@@ -18,9 +21,7 @@ package body Coordonnee is
 
    function obtenirLigne (c : Type_Coordonnee) return Integer is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirLigne unimplemented");
-      return raise Program_Error with "Unimplemented function obtenirLigne";
+      return(c.ligne);
    end obtenirLigne;
 
    --------------------
@@ -29,9 +30,7 @@ package body Coordonnee is
 
    function obtenirColonne (c : Type_Coordonnee) return Integer is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirColonne unimplemented");
-      return raise Program_Error with "Unimplemented function obtenirColonne";
+      return(c.colonne);
    end obtenirColonne;
 
    ------------------
@@ -39,10 +38,13 @@ package body Coordonnee is
    ------------------
 
    function obtenirCarre (c : Type_Coordonnee) return Integer is
+
+      numcarre : Integer;
+
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirCarre unimplemented");
-      return raise Program_Error with "Unimplemented function obtenirCarre";
+      numcarre :=((3*(c.ligne-1)/3)+(c.colonne-1)/3)+1;
+      return(numcarre);
+
    end obtenirCarre;
 
    ----------------------------
@@ -51,12 +53,45 @@ package body Coordonnee is
 
    function obtenirCoordonneeCarre (numCarre : Integer) return Type_Coordonnee
    is
+      c : Type_Coordonnee;
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "obtenirCoordonneeCarre unimplemented");
-      return
-        raise Program_Error
-          with "Unimplemented function obtenirCoordonneeCarre";
+      if numCarre = 1 then
+         c.ligne := 1;
+         c.colonne := 1;
+      end if;
+      if numCarre = 2 then
+         c.ligne := 1;
+         c.colonne := 4;
+      end if;
+      if numCarre = 3 then
+         c.ligne := 1;
+         c.colonne := 7;
+      end if;
+      if numCarre = 4 then
+         c.ligne := 4;
+         c.colonne := 1;
+      end if;
+      if numCarre = 5 then
+         c.ligne := 4;
+         c.colonne := 4;
+      end if;
+      if numCarre = 6 then
+         c.ligne := 4;
+         c.colonne := 7;
+      end if;
+      if numCarre = 7 then
+         c.ligne := 7;
+         c.colonne := 1;
+      end if;
+      if numCarre = 8 then
+         c.ligne := 7;
+         c.colonne := 4;
+      end if;
+      if numCarre = 9 then
+         c.ligne := 7;
+         c.colonne := 7;
+      end if;
+      return c;
    end obtenirCoordonneeCarre;
 
 end Coordonnee;
