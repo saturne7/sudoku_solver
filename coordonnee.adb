@@ -42,11 +42,10 @@ package body Coordonnee is
       numcarre : Integer;
 
    begin
-<<<<<<< HEAD
+
       numcarre :=((3*(c.ligne-1)/3)+(c.colonne-1)/3)+1;
       return(numcarre);
-=======
->>>>>>> 42808db9a70445ff720d9f20ec87bbdf479debf2
+
 
    end obtenirCarre;
 
