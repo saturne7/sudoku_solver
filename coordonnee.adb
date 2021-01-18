@@ -44,22 +44,22 @@ package body Coordonnee is
       if c.ligne <= 3 and c.colonne <=3 then
          return 1;
       elsif c.ligne <= 3 and c.colonne > 3 and c.colonne <= 6 then
-      return 2;
+         return 2;
       elsif c.ligne <= 3 and c.colonne > 6 then
-      return 3;
+         return 3;
       elsif c.ligne > 3 and c.ligne <= 6 and c.colonne <= 3 then
-      return 4;
+         return 4;
       elsif c.ligne > 3 and c.ligne <= 6 and c.colonne > 3 and c.colonne <= 6 then
-      return 5;
+         return 5;
       elsif c.ligne > 3 and c.ligne <= 6 and c.colonne > 6 then
-      return 6;
+         return 6;
       elsif c.ligne > 6 and c.colonne <= 3 then
-      return 7;
+         return 7;
       elsif c.ligne > 6 and c.colonne > 3 and c.colonne <= 6 then
-      return 8;
+         return 8;
       elsif c.ligne > 6 and c.colonne > 6 then
          return 9;
-         end if;
+      end if;
 
    end obtenirCarre;
 
