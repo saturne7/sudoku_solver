@@ -63,12 +63,22 @@ package body resolutions is
    function rechercherSolutionUniqueDansEnsemble
      (resultats : in Type_Ensemble) return Integer
    is
+      i:Integer;
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "rechercherSolutionUniqueDansEnsemble unimplemented");
-      return
-        raise Program_Error
-          with "Unimplemented function rechercherSolutionUniqueDansEnsemble";
+      if nombreChiffres(resultats) > 1 then
+         raise PLUS_DE_UN_CHIFFRE;
+      end if;
+
+      if ensembleVide(resultats) then
+         raise ENSEMBLE_VIDE;
+      end if;
+
+      i:=1;
+      while i < 9 loop
+         if resultats(i) then
+            return i;
+         end if;
+      end loop;
    end rechercherSolutionUniqueDansEnsemble;
 
    --------------------
@@ -77,9 +87,8 @@ package body resolutions is
 
    procedure resoudreSudoku (g : in out Type_Grille; trouve : out Boolean) is
    begin
-      pragma Compile_Time_Warning
-        (Standard.True, "resoudreSudoku unimplemented");
-      raise Program_Error with "Unimplemented procedure resoudreSudoku";
+      if estRemplie(g) then
+         while
    end resoudreSudoku;
 
 end resolutions;
