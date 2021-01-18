@@ -110,7 +110,7 @@ package body grilleSudoku is
    is
       boole : Boolean;
    begin
-      if g(obtenirColonne(c),obtenirLigne(c)) = 0 then
+      if g(obtenirLigne(c),obtenirColonne(c)) = 0 then
          boole := True;
       else
          boole := False;
@@ -168,10 +168,10 @@ package body grilleSudoku is
      (g : in out Type_Grille; c : in Type_Coordonnee; v : in Integer)
    is
    begin
-      if caseVide(g,c) then
-         g(obtenirLigne(c),obtenirColonne(c)):=v;
-      else
+      if not caseVide(g,c) then
          raise FIXER_CHIFFRE_NON_NUL;
+      else
+         g(obtenirLigne(c),obtenirColonne(c)):=v;
       end if;
    end fixerChiffre;
 
@@ -181,8 +181,8 @@ package body grilleSudoku is
 
    procedure viderCase (g : in out Type_Grille; c : in out Type_Coordonnee) is
    begin
-      if g(obtenirColonne(c),obtenirLigne(c)) /= 0 then
-            g(obtenirColonne(c),obtenirLigne(c)):=0;
+      if g(obtenirLigne(c),obtenirColonne(c)) /= 0 then
+            g(obtenirLigne(c),obtenirColonne(c)):=0;
          else
             raise VIDER_CASE_VIDE;
       end if;
@@ -195,13 +195,13 @@ package body grilleSudoku is
    function estRemplie (g : in Type_Grille) return Boolean is
       compt : Integer :=1;
       compt2 : Integer;
-      boole : Boolean :=False;
+      boole : Boolean := True;
    begin
       while compt <= 9 loop
          compt2:=1;
          while compt2 <= 9 loop
             if g(compt,compt2) = 0 then
-               boole :=False;
+               boole := False;
             end if;
             compt2:=compt2+1;
          end loop;

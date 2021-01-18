@@ -100,24 +100,27 @@ package body resolutions is
          while i < 9 loop
             j:=1;
             while j < 9 loop
-               c:=construireCoordonnees(i,j);
-               ligne:=obtenirChiffresDUneLigne(g,i);
-               colonne:=obtenirChiffresDUneColonne(g,j);
+               ligne:=obtenirChiffresDUneLigne(g,obtenirLigne(c));
+               colonne:=obtenirChiffresDUneColonne(g,obtenirColonne(c));
                carre:=obtenirChiffresDUnCarre(g,obtenirCarre(c));
-               if nombreChiffres(obtenirSolutionsPossibles(g,c)) > 1 and
-                 ensembleVide(obtenirSolutionsPossibles(g,c)) then
-                  compteurSol:=compteurSol+1;
-               end if;
+
+               for i in 1..9 loop
+                  if estChiffreValable(g,i,c) and i = obtenirChiffre(g,c) then
+                     compteurSol:=compteurSol+1;
+                  end if;
+               end loop;
                j:=j+1;
             end loop;
             i:=i+1;
          end loop;
+         put(compteurSol);
          if compteurSol = 81 then
             trouve:=true;
          else
             trouve:=false;
          end if;
       else
+         put("ABCD");
          trouve:=false;
       end if;
    end resoudreSudoku;
