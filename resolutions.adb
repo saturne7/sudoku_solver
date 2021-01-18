@@ -97,15 +97,15 @@ package body resolutions is
    begin
       if estRemplie(g) then
          i:=1;
-         while i < 9 loop;
+         while i < 9 loop
             j:=1;
             while j < 9 loop
                c:=construireCoordonnees(i,j);
                ligne:=obtenirChiffresDUneLigne(g,i);
                colonne:=obtenirChiffresDUneColonne(g,j);
                carre:=obtenirChiffresDUnCarre(g,obtenirCarre(c));
-               if rechercherSolutionUniqueDansEnsemble
-                 (obtenirSolutionsPossibles(g,c)) then
+               if nombreChiffres(obtenirSolutionsPossibles(g,c)) > 1 and
+                 ensembleVide(obtenirSolutionsPossibles(g,c)) then
                   compteurSol:=compteurSol+1;
                end if;
                j:=j+1;
